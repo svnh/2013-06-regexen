@@ -38,7 +38,7 @@ describe("your regexes", function(){
   // - use lazy matchers.
   // - use match groups to get your result.
   // - don't use non-regex, non-match group techniques here.
-  it("should filter usernames", function(){
+  it("should extract text", function(){
 
     var extractText = function(str){
       var matches = /fixme/.match(str);
@@ -56,8 +56,55 @@ describe("your regexes", function(){
     })
   })
 
-  // - match an ip address
-  // - match a floating point number.  (trickier than it seems, due to dependencies.  see http://www.regular-expressions.info/floatingpoint.html)
+  // CHALLENGE: match an ip address
+  it("should match ip addresses", function(){
+
+    var regex = /fixme/;
+
+    var tests = [
+      ["a.b.c.d", false],
+      ["10.0.0.224", true],
+      ["192.168.0.1", true],
+      ["192.168.0", false],
+      // ["999.999.999.999", false] // uncomment if you're feeling self-destructive
+    ];
+
+    tests.forEach(function(testData){
+      var string = testData[0], shouldMatch = testData[1];
+      if(shouldMatch){
+        expect(string).toMatch(regex);
+      } else {
+        expect(string).not.toMatch(regex);
+      }
+    })
+  })
+
+  // CHALLENGE: match a decimal number.
+  it("should match ip addresses", function(){
+
+    var regex = /fixme/;
+
+    var tests = [
+      ["-0.0", true],
+      [".", false],
+      ["1.", false],
+      ["1", true],
+      [".023", true],
+      ["12.023", true],
+      ["a12.023", false],
+      ["12.023-", false],
+    ];
+
+    tests.forEach(function(testData){
+      var string = testData[0], shouldMatch = testData[1];
+      if(shouldMatch){
+        expect(string).toMatch(regex);
+      } else {
+        expect(string).not.toMatch(regex);
+      }
+    })
+  })
+
   // - given a string and a few words, test if any of the words occur near each other (within 5 words) within the string
   // - remove the comments from a piece of source code
 
