@@ -1,5 +1,28 @@
 describe("your regexes", function(){
 
+  // CHALLENGE: match an ip address
+  it("should match ip addresses", function(){
+
+    var regex = /fixme/;
+
+    var tests = [
+      ["a.b.c.d", false],
+      ["10.0.0.224", true],
+      ["192.168.0.1", true],
+      ["192.168.0", false],
+      // ["999.999.999.999", false] // uncomment if you're feeling self-destructive
+    ];
+
+    tests.forEach(function(testData){
+      var string = testData[0], shouldMatch = testData[1];
+      if(shouldMatch){
+        expect(string).toMatch(regex);
+      } else {
+        expect(string).not.toMatch(regex);
+      }
+    })
+  })
+
   // CHALLENGE: enforce irritating username rules
   // - must start with a letter.
   // - must be between 4 and 20 characters long.
@@ -53,29 +76,6 @@ describe("your regexes", function(){
 
     tests.forEach(function(testData){
       expect(extractText(testData[0])).toEqual(testData[1]);
-    })
-  })
-
-  // CHALLENGE: match an ip address
-  it("should match ip addresses", function(){
-
-    var regex = /fixme/;
-
-    var tests = [
-      ["a.b.c.d", false],
-      ["10.0.0.224", true],
-      ["192.168.0.1", true],
-      ["192.168.0", false],
-      // ["999.999.999.999", false] // uncomment if you're feeling self-destructive
-    ];
-
-    tests.forEach(function(testData){
-      var string = testData[0], shouldMatch = testData[1];
-      if(shouldMatch){
-        expect(string).toMatch(regex);
-      } else {
-        expect(string).not.toMatch(regex);
-      }
     })
   })
 
