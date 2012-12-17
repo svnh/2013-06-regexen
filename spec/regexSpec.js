@@ -64,7 +64,7 @@ describe("your regexes", function(){
   it("should extract text", function(){
 
     var extractText = function(str){
-      var matches = /fixme/.match(str);
+      var matches = /fixme/.exec(str);
       return /* something to do with matches?? */;
     };
 
@@ -80,7 +80,7 @@ describe("your regexes", function(){
   })
 
   // CHALLENGE: match a decimal number.
-  it("should match ip addresses", function(){
+  it("should match decimal numbers", function(){
 
     var regex = /fixme/;
 
@@ -105,7 +105,31 @@ describe("your regexes", function(){
     })
   })
 
-  // - given a string and a few words, test if any of the words occur near each other (within 5 words) within the string
-  // - remove the comments from a piece of source code
+  // CHALLENGE: given a string and a word, test if the word occurs two 
+  // times in quick succession (within 3 words) within the string.  You 
+  // should use regexes, not because they're the best tool -- but because
+  // you love pain.
+  it("should detect nearby words", function(){
+
+    var containsNearbyWords = function(haystack, needle){
+      // ???
+      return /* ?? */;
+    };
+
+    var tests = [
+      ["we like regexes because they're regexes", "regexes", true],
+      ["regexes are lovely", "potato", false],
+      ["we like a regex because of regexes", "regex", false],
+      ["regexes, we like, because they're regexes", "regexes", false],
+    ];
+
+    tests.forEach(function(testData){
+      var haystack = testData[0], 
+        needle = testData[1], 
+        expectedResult = testData[2]
+        result = containsNearbyWords(haystack, needle);
+      expect(result).toEqual(expectedResult);
+    })
+  })
 
 });
