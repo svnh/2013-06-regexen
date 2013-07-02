@@ -64,8 +64,8 @@ describe("your regexes", function(){
   it("should extract text", function(){
 
     var extractText = function(str){
-      var matches = /fixme/.exec(str);
-      return /* something to do with matches?? */;
+      var matches = str.replace(/<\/?[^>]*>/g, "");
+      return matches;
     };
 
     var tests = [
@@ -82,7 +82,7 @@ describe("your regexes", function(){
   // CHALLENGE: match a decimal number.
   it("should match decimal numbers", function(){
 
-    var regex = /fixme/;
+    var regex = /^-?\d*(\.)?(\d+)$/;
 
     var tests = [
       ["-0.0", true],
